@@ -50,7 +50,12 @@ int main(void)
 		//BSP_GPIOD_OCTL |= 0x08;
 		//BSP_GPIOD_OCTL |= 0x01 << 7;
 		//BSP_GPIOD_BOP |= (0x01 << (7 + 16));
-		BSP_GPIOD_BOP |= (0x01 << (7));
-    while(1) {
+		//BSP_GPIOD_BOP |= (0x01 << (7));
+		//BSP_GPIOE_BOP |= (0x01 << (7));
+//    gpio_bit_set(GPIOD, GPIO_PIN_7);
+//		gpio_bit_reset(GPIOD, GPIO_PIN_7);
+		gpio_bit_write(GPIOD, GPIO_PIN_7, SET);
+	
+		while(1) {
     }
 }
