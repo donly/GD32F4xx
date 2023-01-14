@@ -36,6 +36,8 @@ OF SUCH DAMAGE.
 #include <stdio.h>
 #include "main.h"
 #include "bsp_led.h"
+#include "sys.h"
+#include "bsp_usart.h"
 
 /*!
     \brief    main function
@@ -45,17 +47,31 @@ OF SUCH DAMAGE.
 */
 int main(void)
 {
-		led_gpio_config();
-	
-		//BSP_GPIOD_OCTL |= 0x08;
-		//BSP_GPIOD_OCTL |= 0x01 << 7;
-		//BSP_GPIOD_BOP |= (0x01 << (7 + 16));
-		//BSP_GPIOD_BOP |= (0x01 << (7));
-		//BSP_GPIOE_BOP |= (0x01 << (7));
+	uint16_t i = 0;
+	float f = 0.0;
+	systick_config();
+	led_gpio_config();
+	usart_gpio_config(9600);
+	//BSP_GPIOD_OCTL |= 0x08;
+	//BSP_GPIOD_OCTL |= 0x01 << 7;
+	//BSP_GPIOD_BOP |= (0x01 << (7 + 16));
+	//BSP_GPIOD_BOP |= (0x01 << (7));
+	//BSP_GPIOE_BOP |= (0x01 << (7));
 //    gpio_bit_set(GPIOD, GPIO_PIN_7);
 //		gpio_bit_reset(GPIOD, GPIO_PIN_7);
-		gpio_bit_write(GPIOD, GPIO_PIN_7, SET);
+	//gpio_bit_write(GPIOD, GPIO_PIN_7, SET);
 	
-		while(1) {
-    }
+	printf("Start counting...\r\n");
+	
+	while(1) {
+		//gpio_bit_write(PORT_LED1, PIN_LED1, SET);
+		PDout(7) = 1;
+		delay_1ms(1000);
+		//gpio_bit_write(PORT_LED1, PIN_LED1, RESET);
+		PDout(7) = 0;
+		delay_1ms(1000);
+		i++;
+		f += 0.11;
+		printf("i=%d, f=%0.2f\r\n", i, f);
+  }
 }

@@ -27,6 +27,10 @@
 //#define BSP_GPIOE_OCTL *(unsigned int*)(BSP_GPIOE_BASE + 0x14U)
 //#define BSP_GPIOE_BOP *(unsigned int*)(BSP_GPIOE_BASE + 0x18U)
 	
+#define RCU_LED1 RCU_GPIOD
+#define PORT_LED1 GPIOD
+#define PIN_LED1 GPIO_PIN_7
+
 void led_gpio_config(void);
 
 #endif
