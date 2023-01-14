@@ -50,6 +50,8 @@ int main(void)
 {
 //	uint16_t i = 0;
 //	float f = 0.0;
+	// 设置优先级分组
+	nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
 	systick_config();
 	led_gpio_config();
 	key_gpio_config();
@@ -76,6 +78,6 @@ int main(void)
 //		f += 0.11;
 //		printf("i=%d, f=%0.2f\r\n", i, f);
 		
-		key_scan();
+//		key_scan();
   }
 }
