@@ -38,6 +38,7 @@ OF SUCH DAMAGE.
 #include "bsp_led.h"
 #include "sys.h"
 #include "bsp_usart.h"
+#include "bsp_key.h"
 
 /*!
     \brief    main function
@@ -47,10 +48,11 @@ OF SUCH DAMAGE.
 */
 int main(void)
 {
-	uint16_t i = 0;
-	float f = 0.0;
+//	uint16_t i = 0;
+//	float f = 0.0;
 	systick_config();
 	led_gpio_config();
+	key_gpio_config();
 	usart_gpio_config(9600);
 	//BSP_GPIOD_OCTL |= 0x08;
 	//BSP_GPIOD_OCTL |= 0x01 << 7;
@@ -61,17 +63,19 @@ int main(void)
 //		gpio_bit_reset(GPIOD, GPIO_PIN_7);
 	//gpio_bit_write(GPIOD, GPIO_PIN_7, SET);
 	
-	printf("Start counting...\r\n");
+	//printf("Start counting...\r\n");
 	
 	while(1) {
 		//gpio_bit_write(PORT_LED1, PIN_LED1, SET);
-		PDout(7) = 1;
-		delay_1ms(1000);
-		//gpio_bit_write(PORT_LED1, PIN_LED1, RESET);
-		PDout(7) = 0;
-		delay_1ms(1000);
-		i++;
-		f += 0.11;
-		printf("i=%d, f=%0.2f\r\n", i, f);
+//		PDout(7) = 1;
+//		delay_1ms(1000);
+//		//gpio_bit_write(PORT_LED1, PIN_LED1, RESET);
+//		PDout(7) = 0;
+//		delay_1ms(1000);
+//		i++;
+//		f += 0.11;
+//		printf("i=%d, f=%0.2f\r\n", i, f);
+		
+		key_scan();
   }
 }

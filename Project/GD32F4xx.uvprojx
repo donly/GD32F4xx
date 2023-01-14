@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32F4xx_standard_peripheral\Include;..\Firmware\CMSIS\GD\GD32F4xx\Include;..\Firmware\CMSIS;..\User;..\Hardware\led;..\Hardware\usart</IncludePath>
+              <IncludePath>..\Firmware\GD32F4xx_standard_peripheral\Include;..\Firmware\CMSIS\GD\GD32F4xx\Include;..\Firmware\CMSIS;..\User;..\Hardware\led;..\Hardware\usart;..\Hardware\button</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -421,6 +421,11 @@
               <FileName>bsp_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\usart\bsp_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\button\bsp_key.c</FilePath>
             </File>
           </Files>
         </Group>
