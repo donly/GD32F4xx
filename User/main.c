@@ -39,6 +39,7 @@ OF SUCH DAMAGE.
 #include "sys.h"
 #include "bsp_usart.h"
 #include "bsp_key.h"
+#include "bsp_basic_timer.h"
 
 /*!
     \brief    main function
@@ -56,6 +57,8 @@ int main(void)
 	led_gpio_config();
 	key_gpio_config();
 	usart_gpio_config(9600);
+	basic_timer_config(20000, 10000);
+	
 	//BSP_GPIOD_OCTL |= 0x08;
 	//BSP_GPIOD_OCTL |= 0x01 << 7;
 	//BSP_GPIOD_BOP |= (0x01 << (7 + 16));

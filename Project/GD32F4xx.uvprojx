@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32F4xx_standard_peripheral\Include;..\Firmware\CMSIS\GD\GD32F4xx\Include;..\Firmware\CMSIS;..\User;..\Hardware\led;..\Hardware\usart;..\Hardware\button</IncludePath>
+              <IncludePath>..\Firmware\GD32F4xx_standard_peripheral\Include;..\Firmware\CMSIS\GD\GD32F4xx\Include;..\Firmware\CMSIS;..\User;..\Hardware\led;..\Hardware\usart;..\Hardware\button;..\Hardware\timer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -427,6 +427,11 @@
               <FileType>1</FileType>
               <FilePath>..\Hardware\button\bsp_key.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_basic_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\timer\bsp_basic_timer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -461,6 +466,11 @@
               <FileName>gd32f4xx_exti.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Firmware\GD32F4xx_standard_peripheral\Source\gd32f4xx_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>gd32f4xx_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Firmware\GD32F4xx_standard_peripheral\Source\gd32f4xx_timer.c</FilePath>
             </File>
           </Files>
         </Group>
