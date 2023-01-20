@@ -40,6 +40,7 @@ OF SUCH DAMAGE.
 #include "bsp_usart.h"
 #include "bsp_key.h"
 #include "bsp_basic_timer.h"
+#include "bsp_pwm.h"
 
 /*!
     \brief    main function
@@ -57,7 +58,8 @@ int main(void)
 	led_gpio_config();
 	key_gpio_config();
 	usart_gpio_config(9600);
-	basic_timer_config(20000, 10000);
+	//basic_timer_config(20000, 10000);
+	pwm_config(200, 10000);
 	
 	//BSP_GPIOD_OCTL |= 0x08;
 	//BSP_GPIOD_OCTL |= 0x01 << 7;
@@ -82,5 +84,6 @@ int main(void)
 //		printf("i=%d, f=%0.2f\r\n", i, f);
 		
 //		key_scan();
+		pwm_breathing_led();
   }
 }
