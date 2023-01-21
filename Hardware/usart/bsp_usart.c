@@ -1,6 +1,10 @@
 #include "bsp_usart.h"
 #include <stdio.h>
 
+uint8_t g_recv_buff[USART_RECV_LEN];
+uint16_t g_recv_len = 0;
+uint8_t g_recv_complete_flag = 0;
+
 void usart_gpio_config(uint32_t brand_rate)
 {
 	// 开启时钟
@@ -30,6 +34,14 @@ void usart_gpio_config(uint32_t brand_rate)
 	// 使能串口
 	usart_enable(BSP_USART);
 	usart_transmit_config(BSP_USART, USART_TRANSMIT_ENABLE);
+	usart_receive_config(BSP_USART, USART_RECEIVE_ENABLE);
+	
+	// 配置中断优先级
+	nvic_irq_enable(BSP_USART_IRQ, 2, 2);
+	
+	// 使能中断
+	usart_interrupt_enable(BSP_USART, USART_INT_RBNE); // 接收缓冲区不为空中断和溢出错误中断
+	usart_interrupt_enable(BSP_USART, USART_INT_IDLE); // 空闲检测中断
 }
 
 // 串口发送数据
@@ -53,4 +65,20 @@ int fputc(int ch, FILE *f)
 {
 	usart_send_data(ch);
 	return ch;
+}
+
+// 串口中断函数
+void USART0_IRQHandler(void)
+{
+	if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_RBNE) == SET)
+	{
+		g_recv_buff[g_recv_len++] = usart_data_receive(BSP_USART);
+	}
+	
+	if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_IDLE) == SET)
+	{
+		usart_data_receive(BSP_USART);
+		g_recv_buff[g_recv_len] = '\0';
+		g_recv_complete_flag = 1;
+	}
 }

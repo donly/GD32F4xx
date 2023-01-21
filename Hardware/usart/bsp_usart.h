@@ -15,6 +15,13 @@
 #define BSP_USART_RX_PIN  GPIO_PIN_10
 
 #define BSP_USART 				USART0
+#define BSP_USART_IRQ			USART0_IRQn
+
+#define USART_RECV_LEN	  4096
+
+extern uint8_t g_recv_buff[USART_RECV_LEN];
+extern uint16_t g_recv_len;
+extern uint8_t g_recv_complete_flag;
 
 void usart_gpio_config(uint32_t brand_rate);
 void usart_send_data(uint8_t);
