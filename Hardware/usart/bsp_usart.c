@@ -1,5 +1,6 @@
 #include "bsp_usart.h"
 #include <stdio.h>
+#include "bsp_dma.h"
 
 uint8_t g_recv_buff[USART_RECV_LEN];
 uint16_t g_recv_len = 0;
@@ -40,7 +41,7 @@ void usart_gpio_config(uint32_t brand_rate)
 	nvic_irq_enable(BSP_USART_IRQ, 2, 2);
 	
 	// 使能中断
-	usart_interrupt_enable(BSP_USART, USART_INT_RBNE); // 接收缓冲区不为空中断和溢出错误中断
+	//usart_interrupt_enable(BSP_USART, USART_INT_RBNE); // 接收缓冲区不为空中断和溢出错误中断
 	usart_interrupt_enable(BSP_USART, USART_INT_IDLE); // 空闲检测中断
 }
 
@@ -70,15 +71,20 @@ int fputc(int ch, FILE *f)
 // 串口中断函数
 void USART0_IRQHandler(void)
 {
-	if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_RBNE) == SET)
-	{
-		g_recv_buff[g_recv_len++] = usart_data_receive(BSP_USART);
-	}
+//	if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_RBNE) == SET)
+//	{
+//		g_recv_buff[g_recv_len++] = usart_data_receive(BSP_USART);
+//	}
 	
 	if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_IDLE) == SET)
 	{
 		usart_data_receive(BSP_USART);
+		g_recv_len = USART_RECV_LEN - dma_transfer_number_get(BSP_DMA, BSP_DMA_CH);
+		
 		g_recv_buff[g_recv_len] = '\0';
 		g_recv_complete_flag = 1;
+		
+		dma_channel_disable(BSP_DMA, BSP_DMA_CH);
+		dma_config();
 	}
 }

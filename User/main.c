@@ -42,6 +42,7 @@ OF SUCH DAMAGE.
 #include "bsp_basic_timer.h"
 #include "bsp_pwm.h"
 #include "string.h"
+#include "bsp_dma.h"
 
 /*!
     \brief    main function
@@ -72,6 +73,7 @@ int main(void)
 	//gpio_bit_write(GPIOD, GPIO_PIN_7, SET);
 	
 	//printf("Start counting...\r\n");
+	dma_config();
 	
 	while(1) {
 		//gpio_bit_write(PORT_LED1, PIN_LED1, SET);
