@@ -3,33 +3,29 @@
 
 #include "gd32f4xx.h"
 #include "systick.h"
-
-//#define BSP_RCU_BASE (unsigned int) 0x40023800
-//#define BSP_RCU_AHB1EN *(unsigned int*)(BSP_RCU_BASE + 0x30U)
-
-//#define BSP_GPIOD_BASE (unsigned int) 0x40020C00
-//#define BSP_GPIOD_CTL *(unsigned int*)(BSP_GPIOD_BASE + 0x00)
-//#define BSP_GPIOD_PUD *(unsigned int*)(BSP_GPIOD_BASE + 0x0CU)
-//	
-//#define BSP_GPIOD_OMODE *(unsigned int*)(BSP_GPIOD_BASE + 0x04U)
-//#define BSP_GPIOD_OSPD *(unsigned int*)(BSP_GPIOD_BASE + 0x08U)
-
-//#define BSP_GPIOD_OCTL *(unsigned int*)(BSP_GPIOD_BASE + 0x14U)
-//#define BSP_GPIOD_BOP *(unsigned int*)(BSP_GPIOD_BASE + 0x18U)
-
-//#define BSP_GPIOE_BASE (unsigned int) 0x40021000
-//#define BSP_GPIOE_CTL *(unsigned int*)(BSP_GPIOE_BASE + 0x00)
-//#define BSP_GPIOE_PUD *(unsigned int*)(BSP_GPIOE_BASE + 0x0CU)
-//	
-//#define BSP_GPIOE_OMODE *(unsigned int*)(BSP_GPIOE_BASE + 0x04U)
-//#define BSP_GPIOE_OSPD *(unsigned int*)(BSP_GPIOE_BASE + 0x08U)
-
-//#define BSP_GPIOE_OCTL *(unsigned int*)(BSP_GPIOE_BASE + 0x14U)
-//#define BSP_GPIOE_BOP *(unsigned int*)(BSP_GPIOE_BASE + 0x18U)
 	
-#define RCU_LED1 RCU_GPIOD
-#define PORT_LED1 GPIOD
-#define PIN_LED1 GPIO_PIN_7
+#define RCU_LED_L 	RCU_GPIOA
+#define RCU_LED_R 	RCU_GPIOG
+#define RCU_LED_M 	RCU_GPIOB
+#define RCU_LED_S 	RCU_GPIOE
+
+#define PORT_LED_L	GPIOA
+#define PORT_LED_R	GPIOG
+#define PORT_LED_M	GPIOB
+#define PORT_LED_S  GPIOE
+
+#define PIN_LED_L 	GPIO_PIN_12
+#define PIN_LED_R 	GPIO_PIN_7
+#define PIN_LED_M 	GPIO_PIN_3
+#define PIN_LED_S 	GPIO_PIN_2
+
+#define LED_L_ON gpio_bit_write(PORT_LED_L, PIN_LED_L, SET)
+#define LED_L_OFF gpio_bit_write(PORT_LED_L, PIN_LED_L, RESET)
+#define LED_R_ON gpio_bit_write(PORT_LED_R, PIN_LED_R, SET)
+#define LED_R_OFF gpio_bit_write(PORT_LED_R, PIN_LED_R, RESET)
+
+#define LED_MODE 	PBout(3)
+#define LED_SPEED PEout(2)
 
 void led_gpio_config(void);
 

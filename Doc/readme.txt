@@ -30,7 +30,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
 OF SUCH DAMAGE.
 */
-    This example is based on the GD32450I-EVAL-V1.1 board, it provides a
-  description of SysTick configuration, LED1 is spark. 
+    This project is based on the GD32470ZG board.
+  . 
   
  

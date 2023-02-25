@@ -24,11 +24,11 @@ void basic_timer_config(uint16_t pre, uint16_t per)
 
 void BSP_TIMER_IRQHANDLER(void)
 {
-	if (timer_interrupt_flag_get(BSP_TIMER, TIMER_INT_FLAG_UP) == SET)
-	{
-		gpio_bit_toggle(PORT_LED1, PIN_LED1);
-		printf("BSP_TIMER_IRQHANDLER!\r\n");
-	}
-	
-	timer_interrupt_flag_clear(BSP_TIMER, TIMER_INT_FLAG_UP);
+//	if (timer_interrupt_flag_get(BSP_TIMER, TIMER_INT_FLAG_UP) == SET)
+//	{
+//		gpio_bit_toggle(PORT_LED1, PIN_LED_L);
+//		printf("BSP_TIMER_IRQHANDLER!\r\n");
+//	}
+//	
+//	timer_interrupt_flag_clear(BSP_TIMER, TIMER_INT_FLAG_UP);
 }

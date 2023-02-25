@@ -32,9 +32,19 @@ void led_gpio_config(void)
 //	gpio_output_options_set(GPIOD, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_7);
 
 	// 使能时钟
-	rcu_periph_clock_enable(RCU_LED1);
+	rcu_periph_clock_enable(RCU_LED_L);
+	rcu_periph_clock_enable(RCU_LED_R);
+	rcu_periph_clock_enable(RCU_LED_M);
+	rcu_periph_clock_enable(RCU_LED_S);
+	
 	// 配置GPIO的模式
-	gpio_mode_set(PORT_LED1, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PIN_LED1);
+	gpio_mode_set(PORT_LED_L, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PIN_LED_L);
+	gpio_mode_set(PORT_LED_R, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PIN_LED_R);
+	gpio_mode_set(PORT_LED_M, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PIN_LED_M);
+	gpio_mode_set(PORT_LED_S, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PIN_LED_S);
 	// 配置GPIO的输出
-	gpio_output_options_set(PORT_LED1, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, PIN_LED1);
+	gpio_output_options_set(PORT_LED_L, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, PIN_LED_L);
+	gpio_output_options_set(PORT_LED_R, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, PIN_LED_R);
+	gpio_output_options_set(PORT_LED_M, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, PIN_LED_M);
+	gpio_output_options_set(PORT_LED_S, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, PIN_LED_S);
 }
